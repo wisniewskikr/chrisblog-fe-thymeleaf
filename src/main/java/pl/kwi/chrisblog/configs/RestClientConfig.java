@@ -7,7 +7,7 @@ import org.springframework.web.client.RestClient;
 import org.springframework.web.client.support.RestClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
-import pl.kwi.chrisblog.clients.BeClient;
+import pl.kwi.chrisblog.clients.TagClient;
 
 @Configuration
 public class RestClientConfig {
@@ -16,14 +16,14 @@ public class RestClientConfig {
     private String apiUrl;
 
     @Bean
-    public BeClient beClient(RestClient.Builder restClientBuilder) {
+    public TagClient tagClient(RestClient.Builder restClientBuilder) {
 
         RestClient restClient = restClientBuilder
                 .baseUrl(apiUrl)
                 .build();
         var restClientAdapter = RestClientAdapter.create(restClient);
         var httpServiceProxyFactory = HttpServiceProxyFactory.builderFor(restClientAdapter).build();
-        return httpServiceProxyFactory.createClient(BeClient.class);
+        return httpServiceProxyFactory.createClient(TagClient.class);
 
     }
 
