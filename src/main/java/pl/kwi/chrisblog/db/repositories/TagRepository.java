@@ -1,16 +1,14 @@
 package pl.kwi.chrisblog.db.repositories;
 
 import java.util.List;
-
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
-
+import org.springframework.stereotype.Service;
 import pl.kwi.chrisblog.db.entities.TagEntity;
 
-public interface TagRepository extends CrudRepository<TagEntity, Long> {
+@Service
+public class TagRepository {
 	
-	@Query("SELECT t FROM TagEntity t JOIN t.articles a WHERE a.category.id = (:categoryId) GROUP BY t.name ORDER BY t.name ASC")
-	public List<TagEntity> findAllByCategoryId(@Param("categoryId") long categoryId);
+	public List<TagEntity> findAllByCategoryId(long categoryId) {
+		return null;
+	}
 	
 }

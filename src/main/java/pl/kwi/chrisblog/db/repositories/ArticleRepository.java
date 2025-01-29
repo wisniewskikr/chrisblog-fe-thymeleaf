@@ -4,28 +4,35 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Service;
 
 import pl.kwi.chrisblog.db.entities.ArticleEntity;
 
+@Service
+public class ArticleRepository {
 
-public interface ArticleRepository extends PagingAndSortingRepository<ArticleEntity, Long> {
+	public Page<ArticleEntity> findAll(Pageable pageable) {
+		return null;
+	}
 
-	@Query("SELECT a FROM ArticleEntity a WHERE a.id = (:articleId)")
-	public Optional<ArticleEntity> findById(@Param("articleId") long articleId);
+	public Optional<ArticleEntity> findById(long articleId) {
+		return null;
+	}
 	
-	@Query("SELECT a FROM ArticleEntity a WHERE a.category.id = (:categoryId)")
-	public Page<ArticleEntity> findByCategoryIdAsPage(@Param("categoryId") long categoryId, Pageable pageable);
+	public Page<ArticleEntity> findByCategoryIdAsPage(long categoryId, Pageable pageable) {
+		return null;
+	}
 	
-	@Query("SELECT a FROM ArticleEntity a JOIN a.tags t WHERE t.id = (:tagId) GROUP BY a.id")
-	public Page<ArticleEntity> findByTagIdAsPage(@Param("tagId") long tagId, Pageable pageable);
+	public Page<ArticleEntity> findByTagIdAsPage(long tagId, Pageable pageable) {
+		return null;
+	}
 	
-	@Query("SELECT a FROM ArticleEntity a WHERE LOWER(a.title) LIKE %:searchText% OR LOWER(a.description) LIKE %:searchText%")
-	public Page<ArticleEntity> findBySearchTextAsPage(@Param("searchText") String searchText, Pageable pageable);
+	public Page<ArticleEntity> findBySearchTextAsPage(String searchText, Pageable pageable) {
+		return null;
+	}
 	
-	@Query("SELECT a FROM ArticleEntity a WHERE (LOWER(a.title) LIKE %:searchText% OR LOWER(a.description) LIKE %:searchText%) AND a.category.id = (:categoryId)")
-	public Page<ArticleEntity> findBySearchTextAndCategoryIdAsPage(@Param("searchText") String searchText, @Param("categoryId") long categoryId, Pageable pageable);
+	public Page<ArticleEntity> findBySearchTextAndCategoryIdAsPage(String searchText, long categoryId, Pageable pageable) {
+		return null;
+	}
 	
 }

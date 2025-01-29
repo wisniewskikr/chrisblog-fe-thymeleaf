@@ -1,9 +1,16 @@
 package pl.kwi.chrisblog.db.repositories;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 import pl.kwi.chrisblog.db.entities.CategoryEntity;
 
-public interface CategoryRepository extends CrudRepository<CategoryEntity, Long> {
+@Service
+public class CategoryRepository {
+
+    public List<CategoryEntity> findAll() {
+        return null;
+    }
 	
 }
