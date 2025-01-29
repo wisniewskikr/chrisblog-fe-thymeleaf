@@ -3,66 +3,24 @@ package pl.kwi.chrisblog.db.entities;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-
 import pl.kwi.chrisblog.enums.TemplateEnum;
 
-@Entity
-@Table(name="ARTICLE")
 public class ArticleEntity {
 	
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-	
-	@Column(nullable = false, name = "page_description")
     private String pageDescription;
- 
-    @Column(nullable = false)
     private String title;
-    
-    @Column(nullable = false, length = 700)
     private String description;
-    
-    @Column(nullable = false)
     private Date date;
-    
-    @Column(nullable = false)
     private String author;
-    
-    @Enumerated(EnumType.STRING)
     private TemplateEnum template;
-    
-    @Column(nullable = true)
     private String url;
-    
-    @Column(nullable = true, length = 5000)
     private String content;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
     private CategoryEntity category;
-    
-    @ManyToMany(mappedBy = "articles")
     private Set<TagEntity> tags = new HashSet<TagEntity>();
-   
     
 	public ArticleEntity() {
 	}	
-
 
 	public Long getId() {
 		return id;
@@ -140,6 +98,5 @@ public class ArticleEntity {
 	public void setTags(Set<TagEntity> tags) {
 		this.tags = tags;
 	}	
-	
 
 }
