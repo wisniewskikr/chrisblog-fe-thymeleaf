@@ -1,13 +1,8 @@
 package pl.kwi.chrisblog.db.repositories;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.kwi.chrisblog.clients.ArticleClient;
 import pl.kwi.chrisblog.commands.list.ListCommand;
@@ -26,7 +21,7 @@ public class ArticleRepository {
 	public void findAll(ListCommand command) {	
 		
 		String searchText = null;
-		StringUtils.isNotBlank(command.getSearchText()) {
+		if(StringUtils.isNotBlank(command.getSearchText())) {
 			searchText = command.getSearchText().toLowerCase();
 		}
 
