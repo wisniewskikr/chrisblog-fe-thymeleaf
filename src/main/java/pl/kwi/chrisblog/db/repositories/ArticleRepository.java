@@ -12,6 +12,8 @@ import pl.kwi.chrisblog.dtos.ArticleResponse;
 @Service
 public class ArticleRepository {
 
+	public static final String HOME = "home";
+
 	private final ArticleClient articleClient;
 
 	public ArticleRepository(ArticleClient articleClient) {
@@ -25,7 +27,9 @@ public class ArticleRepository {
 			searchText = command.getSearchText().toLowerCase();
 		}
 
-		ArticleResponse articleResponse = articleClient.findArticles(Long.valueOf(command.getSelectedCategory()), command.getSelectedTag(), command.getCurrentPage() - 1, command.getSelectedSorting(), searchText);
+		Long selectedCategoryId = (HOME.equals(command.getSelectedCategory())) ? 0L : Long.valueOf(command.getSelectedCategory());
+
+		ArticleResponse articleResponse = articleClient.findArticles(selectedCategoryId, command.getSelectedTag(), command.getCurrentPage() - 1, command.getSelectedSorting(), searchText);
 		command.setArticles(articleResponse.articles());
 		command.setPages(articleResponse.pages());
 		command.setDisableNext(articleResponse.disableNext());
