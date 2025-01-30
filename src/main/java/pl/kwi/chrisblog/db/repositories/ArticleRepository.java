@@ -20,20 +20,20 @@ public class ArticleRepository {
 		this.articleClient = articleClient;
 	}
 
-	public void findAll(ListCommand command) {	
+	public void findAll(ListCommand command) {			
 		
-		String searchText = null;
-		if(StringUtils.isNotBlank(command.getSearchText())) {
-			searchText = command.getSearchText().toLowerCase();
-		}
+		Long categoryId = (HOME.equals(command.getSelectedCategory())) ? 0L : Long.valueOf(command.getSelectedCategory());
+		Long tagId = (command.getSelectedTag() == null) ? 0L : command.getSelectedTag();
+		int page = command.getCurrentPage() - 1;
+		String sorting = command.getSelectedSorting();
+		String searchText = (StringUtils.isNotBlank(command.getSearchText())) ? command.getSearchText().toLowerCase() : null;
 
-		Long selectedCategoryId = (HOME.equals(command.getSelectedCategory())) ? 0L : Long.valueOf(command.getSelectedCategory());
-
-		ArticleResponse articleResponse = articleClient.findArticles(selectedCategoryId, command.getSelectedTag(), command.getCurrentPage() - 1, command.getSelectedSorting(), searchText);
+		ArticleResponse articleResponse = articleClient.findArticles(categoryId, tagId, page, sorting , searchText);
 		command.setArticles(articleResponse.articles());
 		command.setPages(articleResponse.pages());
 		command.setDisableNext(articleResponse.disableNext());
 		command.setDisablePrevious(articleResponse.disablePrevious());
+		
 	}
 
 	public Optional<ArticleEntity> findById(long articleId) {
