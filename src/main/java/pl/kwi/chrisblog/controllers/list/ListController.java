@@ -104,23 +104,19 @@ public class ListController extends AbstrPaginationController {
 	
 	private void handleList(ListCommand command) {
 		
-		Page<ArticleEntity> page = null;
-		
 		if(isTag(command)) {
 			log.debug("Type of List: TAG");
-			page = handleTag(command);
+			handleTag(command);
 		} else if(isSearch(command)) {
 			log.debug("Type of List: SEARCH");
-			page = handleSearch(command);
+			handleSearch(command);
 		} else if(isHomeCategory(command)) {
 			log.debug("Type of List: HOME CATEGORY");
-			page = handleHomeCategory(command);
+			handleHomeCategory(command);
 		} else {
 			log.debug("Type of List: OTHER CATEGORIES");
-			page = handleOtherCategories(command);
+			handleOtherCategories(command);
 		}	
-		
-		handlePagination(command, page, paginationItemsOnPage);
 		
 	}
 	
@@ -135,73 +131,32 @@ public class ListController extends AbstrPaginationController {
 	private boolean isHomeCategory(ListCommand command) {		
 		return (HOME.equals(command.getSelectedCategory())) ? true : false;		
 	}
-	
-	private Page<ArticleEntity> handleTag(ListCommand command) {
+
+	private void handleTag(ListCommand command) {
 		
-		Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, articlesOnPage, handleSorting(command.getSelectedSorting()));
-		Page<ArticleEntity> page = articleRepository.findByTagIdAsPage(command.getSelectedTag(), pageable);
-		command.setArticles(page.getContent());
+		articleRepository.findAll(command);
 		command.setTags(tagRepository.findAllByCategoryId(Long.valueOf(command.getSelectedCategory())));
-		return page;
 		
 	}
 	
-	private Page<ArticleEntity> handleSearch(ListCommand command) {
+	private void handleSearch(ListCommand command) {
 		
-		Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, articlesOnPage, handleSorting(command.getSelectedSorting()));
-		Page<ArticleEntity> page = null;
 		if (HOME.equals(command.getSelectedCategory())) {
-			page = articleRepository.findBySearchTextAsPage(command.getSearchText().toLowerCase(), pageable);
+			articleRepository.findAll(command);
 		} else {
-			page = articleRepository.findBySearchTextAndCategoryIdAsPage(command.getSearchText().toLowerCase(), Long.valueOf(command.getSelectedCategory()), pageable);
+			articleRepository.findAll(command);
 			command.setTags(tagRepository.findAllByCategoryId(Long.valueOf(command.getSelectedCategory())));
 		}		
-		command.setArticles(page.getContent());		
-		return page;
 		
 	}
 	
-	private Page<ArticleEntity> handleHomeCategory(ListCommand command) {
-		
-		Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, articlesOnPage, handleSorting(command.getSelectedSorting()));
-		Page<ArticleEntity> page = articleRepository.findAll(pageable);
-		command.setArticles(page.getContent());		
-		return page;
-		
+	private void handleHomeCategory(ListCommand command) {
+		articleRepository.findAll(command);
 	}
-	
-	private Page<ArticleEntity> handleOtherCategories(ListCommand command) {
-		
-		Pageable pageable = PageRequest.of(command.getCurrentPage() - 1, articlesOnPage, handleSorting(command.getSelectedSorting()));
-		Page<ArticleEntity> page = articleRepository.findByCategoryIdAsPage(Long.valueOf(command.getSelectedCategory()), pageable);
-		command.setArticles(page.getContent());
+
+	private void handleOtherCategories(ListCommand command) {
+		articleRepository.findAll(command);
 		command.setTags(tagRepository.findAllByCategoryId(Long.valueOf(command.getSelectedCategory())));
-		return page;
-		
 	}
-	
-	private Sort handleSorting(String selectedSorting) {
 		
-		SortingEnum sortingEnum = SortingEnum.getEnum(selectedSorting);
-		
-		switch (sortingEnum) {
-		case TITLE_INCREASING:
-			return Sort.by(Sort.Direction.ASC, "title");
-		case TITLE_DECREASING:
-			return Sort.by(Sort.Direction.DESC, "title");	
-		case DATE_INCREASING:
-			return Sort.by(Sort.Direction.ASC, "date");
-		case DATE_DECREASING:
-			return Sort.by(Sort.Direction.DESC, "date");
-		case AUTHOR_INCREASING:
-			return Sort.by(Sort.Direction.ASC, "author");
-		case AUTHOR_DECREASING:
-			return Sort.by(Sort.Direction.DESC, "author");
-		default:
-			return Sort.by(Sort.Direction.DESC, "title");
-		}
-		
-	}
-	
-	
 }
