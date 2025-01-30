@@ -38,7 +38,7 @@ public class ArticleRepository {
 	}
 
 	public Optional<ArticleEntity> findById(long articleId) {
-		return null;
+		return Optional.ofNullable(articleClient.findArticleById(articleId));
 	}
 	
 }
