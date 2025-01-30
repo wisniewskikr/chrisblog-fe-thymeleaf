@@ -1,8 +1,11 @@
 package pl.kwi.chrisblog.db.repositories;
 
 import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import pl.kwi.chrisblog.clients.TagClient;
+import pl.kwi.chrisblog.commands.list.ListCommand;
 import pl.kwi.chrisblog.db.entities.TagEntity;
 import pl.kwi.chrisblog.dtos.TagResponse;
 import pl.kwi.chrisblog.enums.SortingEnum;
@@ -16,9 +19,15 @@ public class TagRepository {
 		this.tagClient = tagClient;
 	}
 
-	public List<TagEntity> findAllByCategoryId(long categoryId) {
-		TagResponse tagResponse = tagClient.findTags(categoryId, null, 1, SortingEnum.DATE_INCREASING.toString(), null);
-		return tagResponse.tags();
+	public void findAll(ListCommand command) {
+
+		String searchText = null;
+		StringUtils.isNotBlank(command.getSearchText()) {
+			searchText = command.getSearchText().toLowerCase();
+		}
+
+		TagResponse tagResponse = tagClient.findTags(Long.valueOf(command.getSelectedCategory()), command.getSelectedTag(), command.getCurrentPage() - 1, command.getSelectedSorting(), searchText);
+		command.setTags(tagResponse.tags());
 	}
 	
 }

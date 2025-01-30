@@ -7,10 +7,6 @@ import jakarta.servlet.http.HttpSession;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import lombok.extern.slf4j.Slf4j;
 import pl.kwi.chrisblog.commands.list.ListCommand;
 import pl.kwi.chrisblog.controllers.abstr.AbstrPaginationController;
-import pl.kwi.chrisblog.db.entities.ArticleEntity;
 import pl.kwi.chrisblog.db.repositories.ArticleRepository;
 import pl.kwi.chrisblog.db.repositories.CategoryRepository;
 import pl.kwi.chrisblog.db.repositories.TagRepository;
@@ -133,10 +128,8 @@ public class ListController extends AbstrPaginationController {
 	}
 
 	private void handleTag(ListCommand command) {
-		
 		articleRepository.findAll(command);
-		command.setTags(tagRepository.findAllByCategoryId(Long.valueOf(command.getSelectedCategory())));
-		
+		tagRepository.findAll(command);
 	}
 	
 	private void handleSearch(ListCommand command) {
@@ -145,7 +138,7 @@ public class ListController extends AbstrPaginationController {
 			articleRepository.findAll(command);
 		} else {
 			articleRepository.findAll(command);
-			command.setTags(tagRepository.findAllByCategoryId(Long.valueOf(command.getSelectedCategory())));
+			tagRepository.findAll(command);
 		}		
 		
 	}
@@ -156,7 +149,7 @@ public class ListController extends AbstrPaginationController {
 
 	private void handleOtherCategories(ListCommand command) {
 		articleRepository.findAll(command);
-		command.setTags(tagRepository.findAllByCategoryId(Long.valueOf(command.getSelectedCategory())));
+		tagRepository.findAll(command);
 	}
 		
 }
