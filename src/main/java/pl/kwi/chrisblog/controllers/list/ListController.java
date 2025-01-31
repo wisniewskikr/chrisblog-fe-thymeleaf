@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import pl.kwi.chrisblog.commands.list.ListCommand;
 import pl.kwi.chrisblog.controllers.abstr.AbstrPaginationController;
 import pl.kwi.chrisblog.enums.SortingEnum;
-import pl.kwi.chrisblog.services.ArticleRepository;
+import pl.kwi.chrisblog.services.ArticleService;
 import pl.kwi.chrisblog.services.CategoryRepository;
 import pl.kwi.chrisblog.services.TagRepository;
 import pl.kwi.chrisblog.utils.SessionUtils;
@@ -35,7 +35,7 @@ public class ListController extends AbstrPaginationController {
 	private CategoryRepository categoryRepository;
 	
 	@Autowired
-	private ArticleRepository articleRepository;
+	private ArticleService articleService;
 	
 	@Autowired
 	private TagRepository tagRepository;
@@ -128,27 +128,27 @@ public class ListController extends AbstrPaginationController {
 	}
 
 	private void handleTag(ListCommand command) {
-		articleRepository.findAll(command);
+		articleService.findAll(command);
 		tagRepository.findAll(command);
 	}
 	
 	private void handleSearch(ListCommand command) {
 		
 		if (HOME.equals(command.getSelectedCategory())) {
-			articleRepository.findAll(command);
+			articleService.findAll(command);
 		} else {
-			articleRepository.findAll(command);
+			articleService.findAll(command);
 			tagRepository.findAll(command);
 		}		
 		
 	}
 	
 	private void handleHomeCategory(ListCommand command) {
-		articleRepository.findAll(command);
+		articleService.findAll(command);
 	}
 
 	private void handleOtherCategories(ListCommand command) {
-		articleRepository.findAll(command);
+		articleService.findAll(command);
 		tagRepository.findAll(command);
 	}
 		

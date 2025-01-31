@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import pl.kwi.chrisblog.commands.article.ArticleCommand;
 import pl.kwi.chrisblog.controllers.abstr.AbstractController;
 import pl.kwi.chrisblog.enums.TemplateEnum;
-import pl.kwi.chrisblog.services.ArticleRepository;
+import pl.kwi.chrisblog.services.ArticleService;
 import pl.kwi.chrisblog.utils.SessionUtils;
 
 @Slf4j
@@ -23,7 +23,7 @@ public class ArticleController extends AbstractController {
 	
 	
 	@Autowired
-	private ArticleRepository articleRepository;
+	private ArticleService articleService;
 	
 	
 	@RequestMapping(value = "/{articleId}", method = RequestMethod.GET)
@@ -34,7 +34,7 @@ public class ArticleController extends AbstractController {
 		
 		log.info("Article Id: {}", articleId);
 		
-		command.setArticle(articleRepository.findById(articleId).get());
+		command.setArticle(articleService.findById(articleId).get());
 		mapSessionToCommand(command, session);
 		
 		log.debug("Command class: {}", command);

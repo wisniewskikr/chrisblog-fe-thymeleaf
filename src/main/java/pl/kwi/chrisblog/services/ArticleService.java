@@ -10,13 +10,13 @@ import pl.kwi.chrisblog.dtos.ArticleResponse;
 import pl.kwi.chrisblog.entities.ArticleEntity;
 
 @Service
-public class ArticleRepository {
+public class ArticleService {
 
 	public static final String HOME = "home";
 
 	private final ArticleClient articleClient;
 
-	public ArticleRepository(ArticleClient articleClient) {
+	public ArticleService(ArticleClient articleClient) {
 		this.articleClient = articleClient;
 	}
 
