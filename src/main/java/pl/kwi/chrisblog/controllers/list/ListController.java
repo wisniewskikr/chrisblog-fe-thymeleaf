@@ -18,7 +18,7 @@ import pl.kwi.chrisblog.commands.list.ListCommand;
 import pl.kwi.chrisblog.controllers.abstr.AbstrPaginationController;
 import pl.kwi.chrisblog.enums.SortingEnum;
 import pl.kwi.chrisblog.services.ArticleService;
-import pl.kwi.chrisblog.services.CategoryRepository;
+import pl.kwi.chrisblog.services.CategoryService;
 import pl.kwi.chrisblog.services.TagRepository;
 import pl.kwi.chrisblog.utils.SessionUtils;
 
@@ -32,7 +32,7 @@ public class ListController extends AbstrPaginationController {
 	public static final String HOME = "home";
 
 	@Autowired
-	private CategoryRepository categoryRepository;
+	private CategoryService categoryService;
 	
 	@Autowired
 	private ArticleService articleService;
@@ -42,7 +42,7 @@ public class ListController extends AbstrPaginationController {
 	
 	@ModelAttribute
 	public void addAttributes(Model model) {
-	    model.addAttribute("categories", categoryRepository.findAll());
+	    model.addAttribute("categories", categoryService.findAll());
 	    model.addAttribute("sorting", Arrays.asList(SortingEnum.values()));	    
 	}
 	

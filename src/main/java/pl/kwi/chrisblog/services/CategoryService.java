@@ -8,11 +8,11 @@ import pl.kwi.chrisblog.dtos.CategoryResponse;
 import pl.kwi.chrisblog.entities.CategoryEntity;
 
 @Service
-public class CategoryRepository {
+public class CategoryService {
 
     private final CategoryClient categoryClient;
 
-    public CategoryRepository(CategoryClient categoryClient) {
+    public CategoryService(CategoryClient categoryClient) {
         this.categoryClient = categoryClient;
     }
 
