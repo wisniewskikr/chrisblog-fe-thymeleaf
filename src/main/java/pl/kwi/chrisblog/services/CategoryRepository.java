@@ -1,4 +1,4 @@
-package pl.kwi.chrisblog.repositories;
+package pl.kwi.chrisblog.services;
 
 import java.util.List;
 import java.util.stream.StreamSupport;

@@ -1,4 +1,4 @@
-package pl.kwi.chrisblog.repositories;
+package pl.kwi.chrisblog.services;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
