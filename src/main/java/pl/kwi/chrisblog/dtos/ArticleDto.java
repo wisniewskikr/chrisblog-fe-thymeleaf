@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import pl.kwi.chrisblog.enums.TemplateEnum;
 
-public class ArticleEntity {
+public class ArticleDto {
 	
     private Long id;
     private String pageDescription;
@@ -19,7 +19,7 @@ public class ArticleEntity {
     private CategoryEntity category;
     private Set<TagEntity> tags = new HashSet<TagEntity>();
     
-	public ArticleEntity() {
+	public ArticleDto() {
 	}	
 
 	public Long getId() {

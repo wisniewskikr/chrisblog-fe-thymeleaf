@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import pl.kwi.chrisblog.clients.ArticleClient;
 import pl.kwi.chrisblog.commands.list.ListCommand;
-import pl.kwi.chrisblog.dtos.ArticleEntity;
+import pl.kwi.chrisblog.dtos.ArticleDto;
 import pl.kwi.chrisblog.dtos.ArticleResponse;
 
 @Service
@@ -36,7 +36,7 @@ public class ArticleService {
 		
 	}
 
-	public Optional<ArticleEntity> findById(long articleId) {
+	public Optional<ArticleDto> findById(long articleId) {
 		return Optional.ofNullable(articleClient.findArticleById(articleId));
 	}
 	

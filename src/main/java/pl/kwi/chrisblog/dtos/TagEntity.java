@@ -7,7 +7,7 @@ public class TagEntity {
 	
     private Long id;
     private String name;
-    private Set<ArticleEntity> articles = new HashSet<ArticleEntity>();
+    private Set<ArticleDto> articles = new HashSet<ArticleDto>();
     
 	public TagEntity() {
 	}	
@@ -26,10 +26,10 @@ public class TagEntity {
 		this.name = name;
 	}
 	
-	public Set<ArticleEntity> getArticles() {
+	public Set<ArticleDto> getArticles() {
 		return articles;
 	}
-	public void setArticles(Set<ArticleEntity> articles) {
+	public void setArticles(Set<ArticleDto> articles) {
 		this.articles = articles;
 	}
 

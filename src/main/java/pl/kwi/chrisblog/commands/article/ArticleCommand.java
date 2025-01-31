@@ -2,20 +2,20 @@ package pl.kwi.chrisblog.commands.article;
 
 import lombok.ToString;
 import pl.kwi.chrisblog.commands.abstr.AbstrBlogCommand;
-import pl.kwi.chrisblog.dtos.ArticleEntity;
+import pl.kwi.chrisblog.dtos.ArticleDto;
 
 @ToString
 public class ArticleCommand extends AbstrBlogCommand {
 	
 	
-	private ArticleEntity article;
+	private ArticleDto article;
 	private Long articleId;
 
 	
-	public ArticleEntity getArticle() {
+	public ArticleDto getArticle() {
 		return article;
 	}
-	public void setArticle(ArticleEntity article) {
+	public void setArticle(ArticleDto article) {
 		this.article = article;
 	}
 	
