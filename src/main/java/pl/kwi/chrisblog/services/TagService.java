@@ -7,11 +7,11 @@ import pl.kwi.chrisblog.commands.list.ListCommand;
 import pl.kwi.chrisblog.dtos.TagResponse;
 
 @Service
-public class TagRepository {
+public class TagService {
 
 	private final TagClient tagClient;
 
-	public TagRepository(TagClient tagClient) {
+	public TagService(TagClient tagClient) {
 		this.tagClient = tagClient;
 	}
 

@@ -19,7 +19,7 @@ import pl.kwi.chrisblog.controllers.abstr.AbstrPaginationController;
 import pl.kwi.chrisblog.enums.SortingEnum;
 import pl.kwi.chrisblog.services.ArticleService;
 import pl.kwi.chrisblog.services.CategoryService;
-import pl.kwi.chrisblog.services.TagRepository;
+import pl.kwi.chrisblog.services.TagService;
 import pl.kwi.chrisblog.utils.SessionUtils;
 
 
@@ -38,7 +38,7 @@ public class ListController extends AbstrPaginationController {
 	private ArticleService articleService;
 	
 	@Autowired
-	private TagRepository tagRepository;
+	private TagService tagService;
 	
 	@ModelAttribute
 	public void addAttributes(Model model) {
@@ -129,7 +129,7 @@ public class ListController extends AbstrPaginationController {
 
 	private void handleTag(ListCommand command) {
 		articleService.findAll(command);
-		tagRepository.findAll(command);
+		tagService.findAll(command);
 	}
 	
 	private void handleSearch(ListCommand command) {
@@ -138,7 +138,7 @@ public class ListController extends AbstrPaginationController {
 			articleService.findAll(command);
 		} else {
 			articleService.findAll(command);
-			tagRepository.findAll(command);
+			tagService.findAll(command);
 		}		
 		
 	}
@@ -149,7 +149,7 @@ public class ListController extends AbstrPaginationController {
 
 	private void handleOtherCategories(ListCommand command) {
 		articleService.findAll(command);
-		tagRepository.findAll(command);
+		tagService.findAll(command);
 	}
 		
 }
