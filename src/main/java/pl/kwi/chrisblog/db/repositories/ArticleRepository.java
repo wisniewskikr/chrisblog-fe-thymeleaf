@@ -23,8 +23,8 @@ public class ArticleRepository {
 	public void findAll(ListCommand command) {			
 		
 		Long categoryId = (HOME.equals(command.getSelectedCategory())) ? 0L : Long.valueOf(command.getSelectedCategory());
-		Long tagId = (command.getSelectedTag() == null) ? 0L : command.getSelectedTag();
-		int page = command.getCurrentPage() - 1;
+		Long tagId = command.getSelectedTag();
+		int page = command.getCurrentPage();
 		String sorting = command.getSelectedSorting();
 		String searchText = (StringUtils.isNotBlank(command.getSearchText())) ? command.getSearchText().toLowerCase() : null;
 
