@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 import org.springframework.stereotype.Service;
 import pl.kwi.chrisblog.clients.CategoryClient;
+import pl.kwi.chrisblog.dtos.CategoryEntity;
 import pl.kwi.chrisblog.dtos.CategoryResponse;
-import pl.kwi.chrisblog.entities.CategoryEntity;
 
 @Service
 public class CategoryService {
