@@ -1,9 +1,7 @@
-package pl.kwi.chrisblog.entities;
+package pl.kwi.chrisblog.dtos;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import pl.kwi.chrisblog.dtos.ArticleEntity;
 
 public class TagEntity {
 	

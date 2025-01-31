@@ -3,7 +3,7 @@ package pl.kwi.chrisblog.commands.list;
 import lombok.ToString;
 import pl.kwi.chrisblog.commands.abstr.AbstrBlogCommand;
 import pl.kwi.chrisblog.dtos.ArticleEntity;
-import pl.kwi.chrisblog.entities.TagEntity;
+import pl.kwi.chrisblog.dtos.TagEntity;
 
 @ToString
 public class ListCommand extends AbstrBlogCommand {
