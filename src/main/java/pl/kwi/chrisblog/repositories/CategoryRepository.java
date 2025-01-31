@@ -1,11 +1,11 @@
-package pl.kwi.chrisblog.db.repositories;
+package pl.kwi.chrisblog.repositories;
 
 import java.util.List;
 import java.util.stream.StreamSupport;
 import org.springframework.stereotype.Service;
 import pl.kwi.chrisblog.clients.CategoryClient;
-import pl.kwi.chrisblog.db.entities.CategoryEntity;
 import pl.kwi.chrisblog.dtos.CategoryResponse;
+import pl.kwi.chrisblog.entities.CategoryEntity;
 
 @Service
 public class CategoryRepository {

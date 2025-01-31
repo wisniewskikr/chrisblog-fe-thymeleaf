@@ -1,4 +1,4 @@
-package pl.kwi.chrisblog.db.entities;
+package pl.kwi.chrisblog.entities;
 
 import java.sql.Date;
 import java.util.HashSet;

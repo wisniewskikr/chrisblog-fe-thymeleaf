@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import lombok.extern.slf4j.Slf4j;
 import pl.kwi.chrisblog.commands.list.ListCommand;
 import pl.kwi.chrisblog.controllers.abstr.AbstrPaginationController;
-import pl.kwi.chrisblog.db.repositories.ArticleRepository;
-import pl.kwi.chrisblog.db.repositories.CategoryRepository;
-import pl.kwi.chrisblog.db.repositories.TagRepository;
 import pl.kwi.chrisblog.enums.SortingEnum;
+import pl.kwi.chrisblog.repositories.ArticleRepository;
+import pl.kwi.chrisblog.repositories.CategoryRepository;
+import pl.kwi.chrisblog.repositories.TagRepository;
 import pl.kwi.chrisblog.utils.SessionUtils;
 
 

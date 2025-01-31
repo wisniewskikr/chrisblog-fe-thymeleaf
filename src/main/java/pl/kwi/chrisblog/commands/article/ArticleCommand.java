@@ -2,7 +2,7 @@ package pl.kwi.chrisblog.commands.article;
 
 import lombok.ToString;
 import pl.kwi.chrisblog.commands.abstr.AbstrBlogCommand;
-import pl.kwi.chrisblog.db.entities.ArticleEntity;
+import pl.kwi.chrisblog.entities.ArticleEntity;
 
 @ToString
 public class ArticleCommand extends AbstrBlogCommand {

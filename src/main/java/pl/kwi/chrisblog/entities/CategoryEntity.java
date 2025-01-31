@@ -1,17 +1,17 @@
-package pl.kwi.chrisblog.db.entities;
+package pl.kwi.chrisblog.entities;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class TagEntity {
-	
-    private Long id;
+public class CategoryEntity {
+
+	private Long id;
     private String name;
     private Set<ArticleEntity> articles = new HashSet<ArticleEntity>();
     
-	public TagEntity() {
+	public CategoryEntity() {
 	}	
-	
+
 	public Long getId() {
 		return id;
 	}

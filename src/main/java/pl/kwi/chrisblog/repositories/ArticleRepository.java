@@ -1,4 +1,4 @@
-package pl.kwi.chrisblog.db.repositories;
+package pl.kwi.chrisblog.repositories;
 
 import java.util.Optional;
 
@@ -6,8 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import pl.kwi.chrisblog.clients.ArticleClient;
 import pl.kwi.chrisblog.commands.list.ListCommand;
-import pl.kwi.chrisblog.db.entities.ArticleEntity;
 import pl.kwi.chrisblog.dtos.ArticleResponse;
+import pl.kwi.chrisblog.entities.ArticleEntity;
 
 @Service
 public class ArticleRepository {
