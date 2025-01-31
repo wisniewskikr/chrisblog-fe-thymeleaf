@@ -3,6 +3,8 @@ package pl.kwi.chrisblog.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import pl.kwi.chrisblog.dtos.ArticleEntity;
+
 public class TagEntity {
 	
     private Long id;

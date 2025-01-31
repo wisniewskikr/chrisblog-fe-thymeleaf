@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
 
+import pl.kwi.chrisblog.dtos.ArticleEntity;
 import pl.kwi.chrisblog.dtos.ArticleResponse;
-import pl.kwi.chrisblog.entities.ArticleEntity;
 
 @HttpExchange
 public interface ArticleClient {
