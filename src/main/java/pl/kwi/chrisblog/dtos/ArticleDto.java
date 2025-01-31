@@ -17,7 +17,7 @@ public class ArticleDto {
     private String url;
     private String content;
     private CategoryDto category;
-    private Set<TagEntity> tags = new HashSet<TagEntity>();
+    private Set<TagDto> tags = new HashSet<TagDto>();
     
 	public ArticleDto() {
 	}	
@@ -92,10 +92,10 @@ public class ArticleDto {
 		this.category = category;
 	}
 	
-	public Set<TagEntity> getTags() {
+	public Set<TagDto> getTags() {
 		return tags;
 	}
-	public void setTags(Set<TagEntity> tags) {
+	public void setTags(Set<TagDto> tags) {
 		this.tags = tags;
 	}	
 

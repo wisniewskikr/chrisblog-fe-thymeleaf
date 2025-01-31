@@ -3,13 +3,13 @@ package pl.kwi.chrisblog.dtos;
 import java.util.HashSet;
 import java.util.Set;
 
-public class TagEntity {
+public class TagDto {
 	
     private Long id;
     private String name;
     private Set<ArticleDto> articles = new HashSet<ArticleDto>();
     
-	public TagEntity() {
+	public TagDto() {
 	}	
 	
 	public Long getId() {

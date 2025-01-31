@@ -3,14 +3,14 @@ package pl.kwi.chrisblog.commands.list;
 import lombok.ToString;
 import pl.kwi.chrisblog.commands.abstr.AbstrBlogCommand;
 import pl.kwi.chrisblog.dtos.ArticleDto;
-import pl.kwi.chrisblog.dtos.TagEntity;
+import pl.kwi.chrisblog.dtos.TagDto;
 
 @ToString
 public class ListCommand extends AbstrBlogCommand {
 		
 	private Iterable<ArticleDto> articles;
 	private Long selectedArticle;
-	private Iterable<TagEntity> tags;
+	private Iterable<TagDto> tags;
 
 	
 	public Iterable<ArticleDto> getArticles() {
@@ -27,10 +27,10 @@ public class ListCommand extends AbstrBlogCommand {
 		this.selectedArticle = selectedArticle;
 	}
 	
-	public Iterable<TagEntity> getTags() {
+	public Iterable<TagDto> getTags() {
 		return tags;
 	}
-	public void setTags(Iterable<TagEntity> tags) {
+	public void setTags(Iterable<TagDto> tags) {
 		this.tags = tags;
 	}
 	
