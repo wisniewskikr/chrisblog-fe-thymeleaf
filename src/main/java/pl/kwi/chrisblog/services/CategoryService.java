@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 import org.springframework.stereotype.Service;
 import pl.kwi.chrisblog.clients.CategoryClient;
-import pl.kwi.chrisblog.dtos.CategoryEntity;
+import pl.kwi.chrisblog.dtos.CategoryDto;
 import pl.kwi.chrisblog.dtos.CategoryResponse;
 
 @Service
@@ -16,7 +16,7 @@ public class CategoryService {
         this.categoryClient = categoryClient;
     }
 
-    public List<CategoryEntity> findAll() {
+    public List<CategoryDto> findAll() {
         CategoryResponse categoryResponse = categoryClient.findCategories();
         return StreamSupport.stream(categoryResponse.categories().spliterator(), false)
                                          .toList();

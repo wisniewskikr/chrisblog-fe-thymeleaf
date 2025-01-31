@@ -16,7 +16,7 @@ public class ArticleDto {
     private TemplateEnum template;
     private String url;
     private String content;
-    private CategoryEntity category;
+    private CategoryDto category;
     private Set<TagEntity> tags = new HashSet<TagEntity>();
     
 	public ArticleDto() {
@@ -85,10 +85,10 @@ public class ArticleDto {
 		this.content = content;
 	}
 
-	public CategoryEntity getCategory() {
+	public CategoryDto getCategory() {
 		return category;
 	}
-	public void setCategory(CategoryEntity category) {
+	public void setCategory(CategoryDto category) {
 		this.category = category;
 	}
 	
