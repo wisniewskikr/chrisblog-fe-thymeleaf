@@ -1,3 +1,10 @@
+DESCRIPTION
+-----------
+
+##### Goal
+The goal of this project is to present how to create Front-End part of the blog **chrisblog.eu** using **Java** programming language, **Spring Boot 3** framework and **Thymeleaf** template engine.
+
+
 USAGE MANUAL
 ------------
 
